@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # Base de Datos Relacional
+  postgres_db:
+    image: postgres:15
+    container_name: mi_postgres
+    environment:
+      POSTGRES_USER: user_pg
+      POSTGRES_PASSWORD: password_pg
+      POSTGRES_DB: tienda_db
+    ports:
+      - "5433:5432"
+
+  # Base de Datos NoSQL (Documentos)
+  mongo_db:
+    image: mongo:6.0
+    container_name: mi_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user_mongo
+      MONGO_INITDB_ROOT_PASSWORD: password_mongo
+    ports:
+      - "27017:27017"
+
+  # Base de Datos Clave-Valor
+  redis_db:
+    image: redis:7
+    container_name: mi_redis
+    ports:
+      - "6379:6379"
